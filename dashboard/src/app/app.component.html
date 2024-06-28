@@ -3,4 +3,13 @@
   <li><a routerLink="data-entry-remote">DataEntryRemote</a></li>
   <li><a routerLink="data-view-remote">DataViewRemote</a></li>
 </ul> -->
+<div class="card flex justify-content-center gap-3">
+  <p-button
+    label="Add Entry"
+    icon="pi pi-plus"
+    [loading]="loading"
+    (onClick)="load()"
+  />
+</div>
+
 <router-outlet></router-outlet>
