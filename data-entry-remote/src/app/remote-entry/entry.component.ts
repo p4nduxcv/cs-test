@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputTextModule } from 'primeng/inputtext';
@@ -13,6 +13,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import { ProductService } from '../../../../shared/lib/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -35,13 +37,17 @@ export class RemoteEntryComponent {
   productForm!: FormGroup;
   statusOptions!: any[];
 
-  constructor(private fb: FormBuilder) {}
+  private router = inject(Router);
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductService
+  ) {}
 
   ngOnInit() {
     this.productForm = this.fb.group({
       code: ['', Validators.required],
       name: ['', Validators.required],
-      status: ['', Validators.required],
+      inventoryStatus: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       description: [''],
     });
@@ -56,6 +62,8 @@ export class RemoteEntryComponent {
   onSubmit() {
     if (this.productForm.valid) {
       console.log(this.productForm.value);
+      this.productService.addProduct(this.productForm.value);
+      this.router.navigate(['']);
     }
   }
 }
