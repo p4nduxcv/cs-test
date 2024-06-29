@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-
 @Component({
   standalone: true,
   imports: [RouterModule, ButtonModule],
@@ -10,15 +9,9 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'dashboard';
+  constructor(private router: Router) {}
 
-  loading: boolean = false;
-
-  load() {
-    this.loading = true;
-
-    setTimeout(() => {
-      this.loading = false;
-    }, 2000);
+  navigateToDataEntry() {
+    this.router.navigate(['data-entry-remote']);
   }
 }

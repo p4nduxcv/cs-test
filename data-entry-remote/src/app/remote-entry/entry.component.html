@@ -1,1 +1,44 @@
-<h1>Entry Works</h1>
+<div class="form-container">
+  <form class="card" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-4 pb-12">
+        <label for="code">Code</label>
+        <input id="code" type="text" pInputText formControlName="code" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-4 pb-12">
+        <label for="name">Name</label>
+        <input id="name" type="text" pInputText formControlName="name" />
+      </div>
+
+      <div class="p-field p-col-12 p-md-4 pb-12">
+        <label for="status">Status</label>
+        <p-dropdown
+          id="status"
+          [options]="statusOptions"
+          formControlName="status"
+          optionLabel="label"
+          optionValue="value"
+        ></p-dropdown>
+      </div>
+
+      <div class="p-field p-col-12 p-md-4 pb-12">
+        <label for="name">Price</label>
+        <input id="name" type="number" pInputText formControlName="price" />
+      </div>
+
+      <div class="p-field p-col-12 pb-12">
+        <label for="description">Description</label>
+        <textarea
+          rows="5"
+          cols="30"
+          pInputTextarea
+          [autoResize]="true"
+          formControlName="description"
+        >
+        </textarea>
+      </div>
+      <p-button [disabled]="!productForm.valid" type="submit" label="Submit" />
+    </div>
+  </form>
+</div>
