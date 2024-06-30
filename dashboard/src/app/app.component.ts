@@ -1,10 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import {
-  Router,
-  RouterModule,
-  ActivatedRoute,
-  NavigationEnd,
-} from '@angular/router';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 @Component({

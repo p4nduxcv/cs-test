@@ -54,9 +54,9 @@ export class RemoteEntryComponent {
     });
 
     this.statusOptions = [
-      { label: 'Active', value: 'active' },
-      { label: 'Inactive', value: 'inactive' },
-      { label: 'Out of Stock', value: 'out_of_stock' },
+      { label: 'Active', value: 'Active' },
+      { label: 'Inactive', value: 'Inactive' },
+      { label: 'Out of Stock', value: 'OOS' },
     ];
   }
 
