@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { nanoid } from 'nanoid';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ProductService {
   private dataSubject = new BehaviorSubject<any[]>([
     {
-      id: '1000',
+      id: '112',
       code: 'f230fh0g3',
       name: 'Bamboo Watch',
       description: 'Product Description',
@@ -15,7 +16,7 @@ export class ProductService {
       inventoryStatus: 'INSTOCK',
     },
     {
-      id: '1001',
+      id: '123',
       code: 'nvklal433',
       name: 'Black Watch',
       description: 'Product Description',
@@ -28,7 +29,23 @@ export class ProductService {
   constructor() {}
 
   addProduct(product: object) {
-    this.dataSubject.next([...this.dataSubject.getValue(), product]);
-    console.log('k ', this.dataSubject.getValue());
+    this.dataSubject.next([
+      ...this.dataSubject.getValue(),
+      { id: nanoid(), ...product },
+    ]);
+  }
+
+  deleteProduct(product: any) {
+    const filteredProducts = this.dataSubject
+      .getValue()
+      .filter((p) => p.id !== product.id);
+    this.dataSubject.next(filteredProducts);
+  }
+
+  editProduct(product: any) {
+    const editedProduct = this.dataSubject
+      .getValue()
+      .map((p) => (p.id === product.id ? product : p));
+    this.dataSubject.next(editedProduct);
   }
 }

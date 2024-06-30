@@ -55,6 +55,8 @@ export class RemoteEntryComponent {
   }
 
   onRowEditSave(product: Product) {
+    console.log('first, ', product);
+    this.productService.editProduct(product);
     // if (product.price! > 0) {
     //   delete this.clonedProducts[product.id as string];
     //   this.messageService.add({
@@ -74,5 +76,9 @@ export class RemoteEntryComponent {
   onRowEditCancel(product: Product, index: number) {
     // this.products[index] = this.clonedProducts[product.id as string];
     // delete this.clonedProducts[product.id as string];
+  }
+
+  onRowEditDelete(product: Product, index: number) {
+    this.productService.deleteProduct(product);
   }
 }
