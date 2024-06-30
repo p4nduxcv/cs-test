@@ -61,7 +61,6 @@ export class RemoteEntryComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
       this.productService.addProduct(this.productForm.value);
       this.router.navigate(['']);
     }
