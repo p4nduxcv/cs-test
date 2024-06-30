@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
-import { ProductService } from '../../../../shared/lib/services/product.service';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
@@ -15,6 +14,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { ProductService } from '@my-space/shared';
 
 interface Product {
   id?: string;
@@ -46,19 +46,9 @@ interface Product {
   templateUrl: './entry.component.html',
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class RemoteEntryComponent implements OnInit {
-  // products!: Product[];
-
-  // clonedProducts: { [s: string]: Product } = {};
-
-  public productService = inject(ProductService);
-  productsSig = toSignal(this.productService.data$);
-  constructor(
-    // public productService: ProductService,
-    private messageService: MessageService
-  ) {}
-
-  ngOnInit() {}
+export class RemoteEntryComponent {
+  public readonly productService = inject(ProductService);
+  public readonly messageService = inject(MessageService);
 
   onRowEditInit(product: Product) {
     // this.clonedProducts[product.id as string] = { ...product };

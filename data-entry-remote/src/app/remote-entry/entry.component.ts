@@ -13,8 +13,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
-import { ProductService } from '../../../../shared/lib/services/product.service';
 import { Router } from '@angular/router';
+import { ProductService } from '@my-space/shared';
 
 @Component({
   standalone: true,
