@@ -32,6 +32,7 @@ import { ProductService } from '@my-space/shared';
   ],
   selector: 'app-data-entry-remote-entry',
   templateUrl: './entry.component.html',
+  styleUrl: './entry.component.scss',
 })
 export class RemoteEntryComponent {
   productForm!: FormGroup;
